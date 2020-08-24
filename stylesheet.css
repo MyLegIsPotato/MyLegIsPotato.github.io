@@ -212,6 +212,7 @@ body
 }
 
 .textBlockInfoS { display: none; }
+.textBlockRepairsS { display: none; }
 
 .textBlock
 {
@@ -469,8 +470,9 @@ body
 #headerButtons
 {
 	height: 100%;
-	width: 700px;
-    padding: 0;
+	padding: 0;
+	max-width: 700px;
+	min-width: 300px;
 	margin-left: auto;
     margin-right: auto;
     display: -webkit-box;
@@ -659,7 +661,7 @@ a:hover
 
 	.headerButtons
 	{
-		width: 100%;
+		width: 100vw;
 	}
 
 	#header
@@ -681,8 +683,8 @@ a:hover
 
 	#big
 	{
-		font-size: 180px;
-		line-height: 320px;
+		font-size: 135px;
+		line-height: 220px;
 	}
 
 	.hBarAnchor
@@ -706,12 +708,28 @@ a:hover
 		font-size: 2.5vw;
 	}
 
+	.textBlockRepairsS
+	{
+		display: block;
+		font-size: 2.5vw;
+	}
+
 	.textBlockInfoS .normal
 	{
 		text-align: justify;
 		padding: 0 20px 0 20px;
 		display: block;
 		font-size: 25px;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+
+	.textBlockRepairsS
+	{
+		text-align: left;
+		padding: 0 20px 0 20px;
+		display: block;
+		font-size: 22px;
 		margin-top: auto;
 		margin-bottom: auto;
 	}
