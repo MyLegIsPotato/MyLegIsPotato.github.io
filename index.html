@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	
+    <title>Mateusz Telakowski</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet"> 
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="stylesheet.css" type="text/css">
+	<link rel="stylesheet" href="css/fontello.css" type="text/css">
+	
+	<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js.cookie.js"></script>
+	<script type="text/javascript" src="translation.js"></script>
+	<script type="text/javascript" src="animatescroll.min.js"></script>
+
+	<script>
+		// Select all links with hashes
+		$('a[href*="#"]')
+		// Remove links that don't actually link to anything
+		.not('[href="#"]')
+		.not('[href="#0"]')
+		.click(function(event) {
+			// On-page links
+			if (
+			location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+			&& 
+			location.hostname == this.hostname
+			) {
+			// Figure out element to scroll to
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+			// Does a scroll target exist?
+			if (target.length) {
+				// Only prevent default if animation is actually gonna happen
+				event.preventDefault();
+				$('html, body').animate({
+				scrollTop: target.offset().top
+				}, 1000, function() {
+				// Callback after animation
+				// Must change focus!
+				var $target = $(target);
+				$target.focus();
+				if ($target.is(":focus")) { // Checking if the target was focused
+					return false;
+				} else {
+					$target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+					$target.focus(); // Set focus again
+				};
+				});
+			}
+			}
+		});
+	</script>
+
+
+	<script>
+		function changeBackgroundColor(){
+			var scroll;
+			var blue = 0;
+
+			function getFraction(x, y){
+				var result = x / y;
+				return result;
+			}
+
+			function lerp(min, max, fraction){
+				var result =  (min-max) * fraction;
+				return result;
+			}
+
+			window.addEventListener("scroll", function (event) {
+			scroll = this.scrollY;
+			if(scroll < 1200){
+				document.getElementById("backgroundImage").style.opacity = 1 - lerp(1, 0, getFraction(scroll, 1200));
+			}else
+			{
+				document.getElementById("backgroundImage").style.opacity = 0;
+			}
+			
+			/*'rgba(' +
+				lerp(0, 0, getFraction(scroll, document.body.clientHeight)) + ',' +
+				lerp(0, 0, getFraction(scroll, document.body.clientHeight)) + ',' +
+				lerp(0, 0, getFraction(scroll, document.body.clientHeight)) + ',' +
+				lerp(1, 0, getFraction(scroll, document.body.clientHeight)) + ')';
+			*/
+			});
+		}
+	</script>
+
+  </head>
+	<body onload="changeBackgroundColor();">
+		<div id="backgroundImage"></div>
+			<div style="clear: both;"></div>
+			<div id="globe">
+					<img src="globe.png"/>
+					<button class="translate" id="en"></button>
+					<button class="translate" id="pl"></button>
+				</div>
+			<div id="header">
+				<div id="headerButtons">
+					<ol>
+					<li><a onclick="$('#aboutAnchor').animatescroll({scrollSpeed:1000,easing:'easeInSine'});"><span class="lang" key="about">...</span></a></li>
+					<li><a onclick="$('#supportAnchor').animatescroll({scrollSpeed:1000,easing:'easeInSine'});"><span class="lang" key="repairsShort">...</span></a>
+					<li><a onclick="$('#portfolioAnchor').animatescroll({scrollSpeed:1000,easing:'easeInSine'});"><span class="lang" key="portfolio">...</span></a></li>
+					<li><a onclick="$('#specialitiesAnchor').animatescroll({scrollSpeed:1000,easing:'easeInSine'});"><span class="lang" key="specialities">...</span></a>
+						<!--<ul>
+							<li><a href="#"><span class="lang" key="3d">3D Modelling</span> </a></li>
+							<li><a href="#"><span class="lang" key="gamedev">Game Development</span></a></li>
+							<li><a href="#"><span class="lang" key="programming">Programming</span></a></li>
+						</ul>-->
+					</li>
+					<li><a onclick="$('#contactAnchor').animatescroll({scrollSpeed:1000,easing:'easeInSine'});"><span  class="lang" key="contact">...</span></a></li>
+					</ol>
+				</div>
+			</div>
+			
+			<div id="content">
+			
+				<div id="midAligner">
+					<span id="big" unselectable="on"><span class="lang" key="hi">Welcome.</span></span><br/>
+					
+					<span class="small" unselectable="on"><span class="lang" key="descr">Description.</span>
+				</div>
+
+				<div style="clear: both"></div>	
+				
+				<div class="hBarAnchor" id="aboutAnchor" style="margin-top: 300px !important; height: 50px;"></div>
+				<div class="hBar" id="aboutDiv" style="background-color: #ffee00; height: 200px; text-align: center; line-height: 200px;margin-bottom: 150px;"><span class="lang" key="about"></span></div>
+				
+				<div class="textBlock">
+						<header>
+						<img style="border-radius: 50%; height: 300px; border: 2px solid #ffee00;" src="profilowe.jpg"/>
+						<h1><span style="color: #ffee00;">M</span>ateusz <span style="color:#d1c300;">T</span>elakowski</h1>
+						</header>
+						<article>
+						<h2><span class="lang" key="title">...</span></h2>
+						<section>
+						<h3><span class="lang" key="skills">...</span></h3>							
+							C# / .NET &#9733;&#9733;&#9733;<br/>
+							HTML &#9733;&#9733;&#9733;<br/>
+							CSS &#9733;&#9733;&#9733;<br/>
+							Unity &#9733;&#9733;&#9733;<br/>
+							Blender &#9733;&#9733;&#9734;<br/>
+							Photoshop &#9733;&#9733;&#9733;<br/>
+							Python &#9733;&#9734;&#9734;<br/>
+							SQL &#9733;&#9734;&#9734;<br/>
+							JavaScript &#9733;&#9733;&#9734;<br/>
+							Polish &#9733;&#9733;&#9733;<br/>
+							English &#9733;&#9733;&#9733;<br/>
+						<br/>
+						</section>
+						<q><span class="lang" key="q1">...</span></q> <br/>
+						<q><span class="lang" key="q2">...</span></q> <br/>
+						&gt; <span class="lang" key="me">...</span>
+						</article>
+							<br/>
+					<footer>
+						<span class="lang" key="aboutText">...</span>
+					</footer>
+				</div>
+
+				<div class="textBlockInfoS">
+					<div class="normal">
+					<header>
+						<img style="border-radius: 50%; height: 300px;" src="profilowe.jpg"/>
+						<h1>Mateusz Telakowski</h1>
+					</header>
+					<article>
+					<h2>Technik Informatyk</h2>
+						<section>
+						<h3>Skills</h3>							
+							C# &#9733;&#9733;&#9733;<br/>
+							Python &#9733;&#9733;&#9733;<br/>
+							HTML 5 &#9733;&#9733;&#9733;<br/>
+							CSS 3 &#9733;&#9733;&#9734;<br/>
+							Unity 3D &#9733;&#9733;&#9733;<br/>
+							Blender &#9733;&#9733;&#9734;<br/>
+							ASP.NET &#9733;&#9734;&#9734;<br/>
+							JavaScript &#9733;&#9733;&#9734;<br/>
+							Polish &#9733;&#9733;&#9733;<br/>
+							English &#9733;&#9733;&#9733;<br/>
+						<br/>
+						</section>
+						<q> Jak na świętego Antoniego chmurki, tak Bóg Kubie.</q> <br/>
+						<q> Jak się cenisz, kij się znajdzie.</q> <br/>
+						&gt; Ja, dzisiaj.
+					</article>
+						<br/>
+					<footer>
+						<span class="lang" key="aboutText">...</span>
+					</footer>
+					</div>
+				</div>
+
+				<div class="hBarAnchor" id="supportAnchor" style="margin-top: 150px; height: 50px;"></div>
+				<div class="hBar" id="portfolioDiv" style="background-color: #ffee00; height: 200px; text-align: center; line-height: 200px;margin-bottom: 150px; "><span class="lang" key="repairsBar"></span></div>
+				
+				<div class="section">
+					<div class="textBlock">
+							<p style="font-size: 28px;">Udzielam wsparcia technicznego z dojazdem lub na miejscu na terenie Wrocławia (lub zdalnie jeśli to możliwe) w godzinach 15:00 - 21:00 przez cały tydzień. Dni i godziny mogą ulec zmianie.</p>
+							W zakres wsparcia technicznego wchodzą przeróźne rzeczy związane z komputerami, smartfonami czy urządeniami komputerowymi np. <br>
+							- Czyszczenie, reinstalacja systemu Windows<br>
+							- Konfiguracja systemu<br>
+							- Instalacja oprogramowania czy sterowników<br>
+							- Diagnoza i naprawa sprzętu komputerowego<br>
+							- Konfiguracja urządzeń sieciowych np. routera <br> 
+							- Konfiguracja drukarek <br>
+							- Przyśpieszanie systemu <br>
+							- Czyszczenie podzespołów <br>
+							- Naprawa urządzeń peryferyjnych (myszki, klawiatury itp.) <br>
+							- Pomoc w wyborze podzespołów do komputera<br>
+							- I wiele więcej. <br>
+							<br><br>
+							Nie ustalam z góry cennika, gdyż każdy problem jest inny i ciężko z góry ocenić ile dana naprawa zajmie czasu. W zależności od poziomu skomplikowania problemu cena za godzinę pracy będzie wahać się od 50 do 150 zł.
+							<br>
+							<br>
+							Cena dojazdu to 1zł za każdy kilometr od al. Hallera.
+							<br>
+							<br>
+							Gwarantuję zadowolenie albo nic nie zapłacisz!
+							<br>
+							<br>
+							Zapraszam do kontaktu, najlepiej SMS lub poprzez Discord.
+					</div>
+				</div>
+
+				<div class="hBarAnchor" id="portfolioAnchor" style="margin-top: 150px; height: 50px;"></div>
+				<div class="hBar" id="portfolioDiv" style="background-color: #ffee00; height: 200px; text-align: center; line-height: 200px;margin-bottom: 150px; "><span class="lang" key="portfolio"></span></div>
+				
+				<div class="section">
+						<a href="https://github.com/MyLegIsPotato"><div class="portfolioButton" id="programmingPortfolio"><span class="lang" key="programmingPortfolioButton">...</span>&nbsp;<i class="demo-icon icon-github-circled"></i></div></a>
+						<a href="https://www.deviantart.com/mylegispotato/"><div class="portfolioButton" id="graphicsPortfolio"><i class="icon-deviantart">&nbsp;</i><span class="lang" key="graphicsPortfolioButton">...</span></div></a>
+				</div>
+
+				<div class="hBarAnchor" id="specialitiesAnchor" style="margin-top: 150px; height: 50px;"></div>
+				<div class="hBar" id="specialitiesDiv" style="background-color: #ffee00; height: 200px; text-align: center; line-height: 200px; margin-bottom: 150px;"><span class="lang" key="specialities"></span></div>
+
+				<div style="clear:both;"></div>
+				<div class="section">
+					<div class="captionLefty">
+						<img src="pics/code.png">
+						<div class="text">	
+							<h1><span class="lang" key="programming">...</span></h1>
+							<span class="lang" key="programmingContent">...</span>
+						</div>
+					</div>
+					<div style="clear:both;"></div>
+
+					<div class="spacer"></div>
+
+					<div class="caption">
+						<img src="pics/unity.png">
+						<div class="text">	
+							<h1><span class="lang" key="gamedev">...</span></h1>
+							<span class="lang" key="gamedevContent">...</span>
+						</div>
+					</div>
+
+					<div class="spacer"></div>
+
+					<div class="captionLefty">
+						<img src="pics/repairs.png">
+						<div class="text">	
+							<h1><span class="lang" key="repairs">...</span></h1>
+							<span class="lang" key="repairsContent">...</span>
+						</div>
+					</div>
+
+					<div class="spacer"></div>
+
+					<div class="caption">
+							<img src="pics/3dgraphics.png">
+							<div class="text">	
+								<h1><span class="lang" key="3d">...</span></h1>
+								<span class="lang" key="3dContent">...</span>
+							</div>
+					</div>
+
+					<div class="spacer"></div>
+
+					<div class="captionLefty">
+						<img src="pics/digitalart.png">
+						<div class="text">	
+							<h1><span class="lang" key="digitalart">...</span></h1>
+							<span class="lang" key="digitalartContent">...</span>
+						</div>
+					</div>
+
+					<div class="spacer"></div>
+
+					<!--
+					<div class="caption">
+						<img src="https://via.placeholder.com/280x250">
+						<div class="text">	
+							<h1>GameDev</h1>
+								Phasellus ut diam scelerisque nisi tempor accumsan in non mi. Aliquam molestie elit leo, non sollicitudin nisi efficitur ut. Nunc sem lectus, tempor non viverra in, feugiat eget augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus consectetur augue placerat, dignissim felis ac, consequat turpis. Donec quis nibh nibh. Vestibulum lacus lectus, hendrerit vel purus sit amet, lobortis interdum tortor. Morbi non posuere odio, maximus fringilla nibh.
+						</div>
+					</div>
+					<div class="caption">
+						<img src="https://via.placeholder.com/280x250">
+						<div class="text">	
+							<h1>Graphics</h1>
+								Nunc ac lacus vitae neque posuere convallis a a sem. Proin ullamcorper ante at eros commodo rutrum. Aenean eu neque nec metus porta auctor eget a risus. Integer ornare turpis vitae nisl scelerisque, sed volutpat felis accumsan. Etiam quis efficitur risus. Aenean finibus ac mauris nec egestas. Fusce pulvinar, est eget efficitur mollis, tellus massa molestie dolor, nec vehicula dui orci sed turpis. Suspendisse fringilla neque sed sagittis tempor.
+						</div>
+					</div>
+					-->
+
+					<!--
+					<div class="textBlockInfoS" style="padding-top: 50px; padding-bottom: 50px;">
+						<h1>Programming</h1>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate magna enim, in volutpat quam faucibus mollis. Aenean ut porttitor diam, et pulvinar magna. Morbi convallis sagittis lacus eu viverra. Proin sed ex quis ipsum porta lobortis id quis odio. Curabitur vitae massa ornare, lobortis odio vel, porttitor urna. Aenean sem tellus, sagittis nec eleifend et, blandit ac nulla. Aliquam erat volutpat. Vivamus molestie rutrum luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla sed magna egestas, pretium massa ut, lobortis justo. Proin a vestibulum lacus. Integer sed porttitor leo.
+						<h1>GameDev</h1>
+							Phasellus ut diam scelerisque nisi tempor accumsan in non mi. Aliquam molestie elit leo, non sollicitudin nisi efficitur ut. Nunc sem lectus, tempor non viverra in, feugiat eget augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus consectetur augue placerat, dignissim felis ac, consequat turpis. Donec quis nibh nibh. Vestibulum lacus lectus, hendrerit vel purus sit amet, lobortis interdum tortor. Morbi non posuere odio, maximus fringilla nibh.
+						<h1>Graphics</h1>
+							Nunc ac lacus vitae neque posuere convallis a a sem. Proin ullamcorper ante at eros commodo rutrum. Aenean eu neque nec metus porta auctor eget a risus. Integer ornare turpis vitae nisl scelerisque, sed volutpat felis accumsan. Etiam quis efficitur risus. Aenean finibus ac mauris nec egestas. Fusce pulvinar, est eget efficitur mollis, tellus massa molestie dolor, nec vehicula dui orci sed turpis. Suspendisse fringilla neque sed sagittis tempor.
+					</div>
+					-->
+				</div>
+
+				<div class="hBarAnchor" id="contactAnchor" style="margin-top: 150px; height: 50px;"></div>
+				<div class="hBar" id="contactDiv" style="background-color: #ffee00; height: 200px; text-align: center; line-height: 200px; margin-bottom: 150px !important;"><span class="lang" key="contact"></span></div>
+				
+				<div class="section">
+					<div class="textBlock">
+						<h1><span class="lang" key="phone" style="display: block;"></span></h1>
+						<h1><span class="lang" key="discord"></span><br/></h1>
+						<h2><span class="lang" key="email" style="display: block;"></span></h2>
+						<!--<h3><span class="lang" key="fb"></span><a href="https://www.facebook.com/mylegispotato" target="_blank"><i class="icon-facebook"></i></a><br/></h3>
+						<h3><span class="lang" key="li"></span><a href="https://www.linkedin.com/in/mateusz-telakowski-b18902161/" target="_blank"><i class="icon-linkedin"></i></a></h3>-->
+					</div>
+
+					<div class="textBlockInfoS">
+						<h3><span class="lang" key="phone" style="display: block;"></span></h3>
+						<h3><span class="lang" key="discord"></span><br/></h3>
+						<h3><span class="lang" key="email" style="display: block;"></span></h3>
+						<!--<h1><span class="lang" key="fb"></span><a href="https://www.facebook.com/mylegispotato" target="_blank"><i class="icon-facebook"></i></a><br/></h2>
+						<h1><span class="lang" key="li"></span><a href="https://www.linkedin.com/in/mateusz-telakowski-b18902161/" target="_blank"><i class="icon-linkedin"></i></a></h3>-->
+					</div>
+				</div>
+			</div>
+			
+				<div id="bottomBar">
+					<div class="socialDiv1"><a href="https://mylegispotato.deviantart.com/" target="_blank"> <i class="icon-deviantart"></i></a></div>
+					<div class="socialDiv5"><a href="https://github.com/MyLegIsPotato" target="_blank"><i class="demo-icon icon-github-circled"></i></a> </div>
+					<div class="socialDiv2"><a href="https://twitter.com/MyLegIsPotato" target="_blank"><i class="icon-twitter"></i></a> </div>
+					<div class="socialDiv3"><a href="https://www.facebook.com/mylegispotato" target="_blank"><i class="icon-facebook"></i></a> </div>	
+					<div class="socialDiv4"><a href="https://www.linkedin.com/in/mateusz-telakowski-b18902161/" target="_blank"><i class="icon-linkedin"></i></a> </div>	
+				</div>
+			
+			<div id="footer">
+			
+			Mateusz Telakowski 2020 &copy All rights reserved.
+			
+			</div>
+  </body>
+</html>
